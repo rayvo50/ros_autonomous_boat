@@ -1,0 +1,25 @@
+<launch>
+
+    <!-- run pointcloud_to_laserscan node -->
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+
+        <remap from="cloud_in" to="/lidar"/> 
+        <remap from="scan" to="/laserscan"/> 
+        <rosparam>
+            target_frame: velodyne
+            transform_tolerance: 0.01
+            min_height: -10
+            max_height: 10
+            angle_min: -3.14 #-M_PI/2
+            angle_max: 3.14 #M_PI/2 
+            angle_increment: 0.01
+            scan_time: 0.3333
+            range_min: 0.45
+            range_max: 100
+            use_inf: true
+            concurrency_level: 1
+        </rosparam>
+
+    </node>
+
+</launch>
